@@ -14,7 +14,6 @@ import java.util.Map;
 import tk.wmss.myimoocdemoapp.R;
 
 /**
- *
  * Created by wmss on 2016/6/11.
  */
 public class ListViewActivity extends AppCompatActivity {
@@ -24,6 +23,9 @@ public class ListViewActivity extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapter;
     private SimpleAdapter simpleAdapter;
     private List<Map<String, Object>> myData;
+    private int[] ints = new int[]{R.id.image_view_my, R.id.text_view_my};
+    private String[] strings = new String[]{"img", "text"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +68,7 @@ public class ListViewActivity extends AppCompatActivity {
         *
         * */
         myData = new ArrayList<Map<String, Object>>();
-        simpleAdapter = new SimpleAdapter(this,myData,R.layout.my_item2,new String[]{"img","text"},new  int[]{R.id.image_view_my,R.id.text_view_my});
+        simpleAdapter = new SimpleAdapter(this, getData(), R.layout.my_item2, strings, ints);
         listView2.setAdapter(simpleAdapter);
     }
 
