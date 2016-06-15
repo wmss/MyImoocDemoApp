@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import tk.wmss.myimoocdemoapp.R;
  * Created by wmss on 2016/6/11.
  *
  */
+//使用接口的方式来监听事件
 public class ListViewActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,AbsListView.OnScrollListener {
 
     private ListView listView;
@@ -59,7 +61,11 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
         arrayAdapter = new ArrayAdapter<String>(this, R.layout.my_item, arrayData);
         //视图（ListView）加载适配器
         listView.setAdapter(arrayAdapter);
-
+        //实现控件的监听
+        //监听点击列表项的事件
+        listView2.setOnItemClickListener(this);
+        //监听列表滚动的事件
+        listView2.setOnScrollListener(this);
         /*
         * SimpleAdapter包含了5个参数
         * 1.上下文
@@ -79,7 +85,7 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
 
     private List<Map<String, Object>> getData() {
         // 新建一个集合类，用于存放多条数据
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 20; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("img", R.mipmap.ic_launcher);
             map.put("text", "机器人" + i);
@@ -90,11 +96,31 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String text = listView.getItemAtPosition(position)+"";
+        Toast.makeText(ListViewActivity.this, "pos"+position+"text:"+text, Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
+        switch (scrollState)
+        {
+            case SCROLL_STATE_FLING:
+                Toast.makeText(ListViewActivity.this, "你用力地滑了一下", Toast.LENGTH_SHORT).show();
+                Map<String,Object>map = new HashMap<String, Object>();
+                map.put("img",R.mipmap.ic_launcher);
+                map.put("text","我是后来家上去的");
+                myData.add(map);
+                simpleAdapter.notifyDataSetChanged();
+                break;
+
+            case SCROLL_STATE_IDLE:
+                Toast.makeText(this, R.string.tinzhihuadon,Toast.LENGTH_SHORT).show();
+                break;
+            case SCROLL_STATE_TOUCH_SCROLL:
+                Toast.makeText(ListViewActivity.this, "手指没有离开屏幕", Toast.LENGTH_SHORT).show();
+                break;
+        }
 
     }
 

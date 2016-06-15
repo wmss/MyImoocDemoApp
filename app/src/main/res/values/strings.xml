@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ImoocDemo</string>
+    <string name="tinzhihuadon">视图已经停止了滑动</string>
 </resources>
