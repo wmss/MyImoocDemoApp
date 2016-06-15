@@ -2,6 +2,9 @@ package tk.wmss.myimoocdemoapp.SecondCourse;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -17,7 +20,7 @@ import tk.wmss.myimoocdemoapp.R;
  * Created by wmss on 2016/6/11.
  *
  */
-public class ListViewActivity extends AppCompatActivity {
+public class ListViewActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,AbsListView.OnScrollListener {
 
     private ListView listView;
     private ListView listView2;
@@ -56,6 +59,7 @@ public class ListViewActivity extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<String>(this, R.layout.my_item, arrayData);
         //视图（ListView）加载适配器
         listView.setAdapter(arrayAdapter);
+
         /*
         * SimpleAdapter包含了5个参数
         * 1.上下文
@@ -82,5 +86,20 @@ public class ListViewActivity extends AppCompatActivity {
             myData.add(map);
         }
         return myData;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+    }
+
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
     }
 }
