@@ -18,6 +18,7 @@
 
         <activity android:name="tk.wmss.myimoocdemoapp.SecondCourse.SecondCourseActivity"/>
         <activity android:name="tk.wmss.myimoocdemoapp.SecondCourse.ListViewActivity"/>
+        <activity android:name="tk.wmss.myimoocdemoapp.SecondCourse.SelectTimeActivity"/>
     </application>
 
 </manifest>

@@ -22,4 +22,9 @@ public class SecondCourseActivity extends AppCompatActivity{
         startActivity(intent);
     }
 
+    public void  goToSelectTime(View view){
+        Intent intent = new Intent(this, SelectTimeActivity.class);
+        startActivity(intent);
+    }
+
 }
