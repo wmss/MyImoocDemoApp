@@ -94,6 +94,7 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
         return myData;
     }
 
+    //列表项点击事件
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String text = listView.getItemAtPosition(position)+"";
@@ -101,6 +102,7 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
+    //列表滑动事件
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         switch (scrollState)
